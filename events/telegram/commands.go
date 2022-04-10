@@ -6,8 +6,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/psihachina/telegrambot/lib/e"
-	"github.com/psihachina/telegrambot/storage"
+	"github.com/psihachina/read-adviser-bot/lib/e"
+	"github.com/psihachina/read-adviser-bot/storage"
 )
 
 const (
@@ -45,7 +45,7 @@ func (p *Processor) savePage(chatID int, pageURL string, username string) (err e
 		UserName: username,
 	}
 
-	isExists, err := p.storage.IsExist(page)
+	isExists, err := p.storage.IsExists(page)
 	if err != nil {
 		return err
 	}
@@ -69,11 +69,11 @@ func (p *Processor) sendRandom(chatID int, username string) (err error) {
 	defer func() { err = e.WrapIfErr("can't do command: can't send random", err) }()
 
 	page, err := p.storage.PickRandom(username)
-	if err != nil && !errors.Is(err, storage.ErrNoSavedPage) {
+	if err != nil && !errors.Is(err, storage.ErrNoSavedPages) {
 		return err
 	}
 
-	if errors.Is(err, storage.ErrNoSavedPage) {
+	if errors.Is(err, storage.ErrNoSavedPages) {
 		return p.tg.SendMessage(chatID, msgNoSavedPages)
 	}
 

@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/psihachina/telegrambot/events"
+	"github.com/psihachina/read-adviser-bot/events"
 )
 
 type Consumer struct {

@@ -3,10 +3,10 @@ package telegram
 import (
 	"errors"
 
-	"github.com/psihachina/telegrambot/clients/telegram"
-	"github.com/psihachina/telegrambot/events"
-	"github.com/psihachina/telegrambot/lib/e"
-	"github.com/psihachina/telegrambot/storage"
+	"github.com/psihachina/read-adviser-bot/clients/telegram"
+	"github.com/psihachina/read-adviser-bot/events"
+	"github.com/psihachina/read-adviser-bot/lib/e"
+	"github.com/psihachina/read-adviser-bot/storage"
 )
 
 type Processor struct {
